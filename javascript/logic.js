@@ -19,6 +19,8 @@ $(document).ready(function (){
     var frequency ="";
     var nextTrain = "";
     
+
+    
     //add train click function, logs to database
     $("#add-train").on("click",function(event){
         event.preventDefault();
@@ -60,10 +62,10 @@ $(document).ready(function (){
         $("#destination-input").val("");
         $("#first-input").val("");
         $("#frequency-input").val("");
-    
+    });
     
         //references Database, upon reload append the last child, arrival time changes due to change in actual time
-        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
+        database.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", function(snapshot){
         
             var tableRow = $("<tr>");
             var tdName = $("<td>");
@@ -77,14 +79,12 @@ $(document).ready(function (){
             var tdMinutesAway = $("<td>");
             tdMinutesAway.addClass("displayNextTrain");
             
-
-
             tdName.text(snapshot.val().DbName);
             tdDestination.text(snapshot.val().DbDestination);
             tdFrequency.text(snapshot.val().DbFrequency);
             tdNextTrain.text(snapshot.val().DbMinutes);
             tdMinutesAway.text(snapshot.val().DbArrivalMinute)
-            console.log("Minutes away: " + tMinutesTillTrain)
+            
             
             //append to the table
             tableRow.append(tdName);
@@ -95,11 +95,11 @@ $(document).ready(function (){
             
             //append the rows to the table in html
             $("#tableBody").append(tableRow);
-        
+            
         });  
-        tdNextTrain.empty();
-        tdMinutesAway.empty()
-    });
+        
+        
+
 });//end doc ready
     
     
