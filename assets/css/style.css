@@ -4,9 +4,13 @@ body{
 }
 
 .jumbotron{
-    background: #5e5c5c
+    background: #5e5c5c;
 }
 .form {
     background:#5e5c5c;
     
+}
+
+td, th{
+    text-align: center
 }

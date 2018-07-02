@@ -7,8 +7,8 @@ $(document).ready(function (){
     projectId: "trainschedule-7fa1c",
     storageBucket: "trainschedule-7fa1c.appspot.com",
     messagingSenderId: "630397453957"
-  };
-  firebase.initializeApp(config);
+    };
+    firebase.initializeApp(config);
     
     var database= firebase.database();
     
@@ -78,6 +78,8 @@ $(document).ready(function (){
             tdNextTrain.addClass("displayNextTrain");
             var tdMinutesAway = $("<td>");
             tdMinutesAway.addClass("displayNextTrain");
+            
+
             
             tdName.text(snapshot.val().DbName);
             tdDestination.text(snapshot.val().DbDestination);
